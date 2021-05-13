@@ -1,8 +1,9 @@
-#!/usr/bin/python2
+#!/usr/bin/python3
 import argparse
 import sys
 sys.path.insert(0,'./scripts/')
-from scripts import FastCGI, MySQL, PostgreSQL, DumpMemcached, PHPMemcached, PyMemcached, RbMemcached, Redis, SMTP, Zabbix
+#from scripts import FastCGI, MySQL, PostgreSQL, DumpMemcached, PHPMemcached, PHPMemcached, RbMemcached, Redis, SMTP, Zabbix
+from scripts import MySQL, PostgreSQL
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--exploit",
@@ -25,7 +26,7 @@ class colors:
     orange='\033[33m'
     blue='\033[34m'
 
-print colors.green + """
+print(colors.green + """
 
   ________              .__
  /  _____/  ____ ______ |  |__   ___________ __ __  ______
@@ -33,10 +34,10 @@ print colors.green + """
 \    \_\  (  <_> )  |_> >   Y  \  ___/|  | \/  |  /\___ \\
  \______  /\____/|   __/|___|  /\___  >__|  |____//____  >
         \/       |__|        \/     \/                 \/
-""" + "\n\t\t" + colors.blue + "author: " + colors.orange + "$_SpyD3r_$" + "\n" + colors.reset
+        """ + "\n\t\t" + colors.blue + "author: " + colors.orange + "$_SpyD3r_$" + "\n\t\t" + colors.blue + "Python3 version by:" + colors.orange + "0x1ceb00da" + "\n" + colors.reset)
 
 if(not args.exploit):
-    print parser.print_help()
+    parser.print_help()
     exit()
 
 if(args.exploit=="mysql"):
@@ -60,4 +61,4 @@ elif(args.exploit=="rbmemcache"):
 elif(args.exploit=="pymemcache"):
     PyMemcached.PyMemcached()
 else:
-    print parser.print_help()
+    parser.print_help()
